@@ -32,3 +32,31 @@ body {
     color: #cd61f1!important;
     opacity: 0.8!important;
 }
+
+@media (min-width: 1261px) {
+.header-menu .sublist li a {
+    padding: 7px 17px 1px 17px!important;
+}
+.header-menu .sublist .plus-button {
+    width: 50px;
+    height: 31px!important;
+}
+}
+
+.gallery .picture-thumbs {
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    margin: 0px 30px 15px !important;
+}
+
+.ref-url {
+    text-align: right;
+}
+
+.ref-url a {
+    padding: 6px 7px 3px 7px;
+    background-color: red;
+    color: white; 
+}
+
+ 

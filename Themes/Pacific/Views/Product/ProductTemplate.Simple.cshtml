@@ -109,7 +109,11 @@
                         </div>
                         <div class="overview-wrapper @if (isProductPageLayoutOne) {<text>equalize</text>}">
                             <div class="overview">
-								@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
+                                @if (!string.IsNullOrEmpty(Model.RefUrl))
+                                {
+                                    <div class="ref-url"><a target="_blank" href="@Html.Raw(Model.RefUrl)">Reference Url</a></div>
+                                }
+                                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
                                 @await Html.PartialAsync("_Discontinued", Model)
                                 <div class="product-overview-top">
                                     <div class="product-name">
@@ -176,7 +180,7 @@
                                 <div class="overview-buttons-wrapper">
                                     <!--wishlist, compare, email a friend-->
                                     <div class="overview-buttons">
-                            			@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsBefore, additionalData = Model })
+                                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsBefore, additionalData = Model })
                                         @{
                                             var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
                                             dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
@@ -186,7 +190,7 @@
                                         @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
                                         <!--sample download-->
                                         @await Html.PartialAsync("_DownloadSample", Model)
-                            			@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsAfter, additionalData = Model })
+                                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsAfter, additionalData = Model })
                                     </div>
                                     <!--add to cart-->
                                     @{
@@ -195,11 +199,11 @@
                                         @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
                                     }
                                 </div>
-                        		@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
+                                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
                             </div>
                             @if (!isProductPageLayoutOne)
                             {
-								@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
+                                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
                                 <div class="product-collateral">
                                     @if (!string.IsNullOrEmpty(Model.FullDescription))
                                     {
@@ -216,7 +220,7 @@
                     </div>
                     @if (isProductPageLayoutOne)
                     {
-						@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
+                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
                         <div class="product-collateral">
                             @if (!string.IsNullOrEmpty(Model.FullDescription))
                             {
@@ -235,8 +239,8 @@
                     @await Component.InvokeAsync("ProductsAlsoPurchased", new { productId = Model.Id })
                     @if (isProductPageLayoutOne)
                     {
-                    if (!string.IsNullOrEmpty(categoryNavigation.ToHtmlString()))
-                    {
+                        if (!string.IsNullOrEmpty(categoryNavigation.ToHtmlString()))
+                        {
                             <div class="block block-category-navigation">
                                 <div class="title">
                                     <strong>@T("Categories")</strong>
