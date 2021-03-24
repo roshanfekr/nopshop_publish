@@ -1,0 +1,5 @@
+﻿{
+  "DataConnectionString": "Data Source=45.139.102.219\\MSSQLSERVER2019;Initial Catalog=kharejic_nopshop;Integrated Security=False;Persist Security Info=False;User ID=user_nopshop;Password=~nl3R6e9",
+  "DataProvider": "sqlserver",
+  "RawDataSettings": {}
+}
